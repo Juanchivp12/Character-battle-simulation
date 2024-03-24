@@ -13,6 +13,13 @@ public class Character
         this.speed = speed;
     }
 
+    public Character(Character ch)
+    {
+        this.name = ch.name;
+        this.strength = ch.strength;
+        this.speed = ch.speed;
+    }
+
     public int attack()
     {
         final int ATTACK_DAMAGE = 10;
@@ -41,5 +48,34 @@ public class Character
     public void takeDamage(int damageTaken)
     {
         currentHealth -= damageTaken;
+    }
+
+
+    public String toString()
+    {
+        String characterString = "Your character's name is " + name + "\n" +
+                                 "Their strength is " + strength + "\n" +
+                                 "Their speed is " + speed;
+        return characterString;
+    }
+
+    public boolean equals(Character ch)
+    {
+        boolean status;
+
+        if (name.equals(ch.name) && strength == ch.strength && speed == ch.speed)
+        {
+            status = true;
+        }
+        else
+        {
+            status = false;
+        }
+        return status;
+    }
+
+    public Character copy()
+    {
+        return new Character(this);
     }
 }
