@@ -65,7 +65,7 @@ public final class Character
         Random rnd = new Random();
         int chance = rnd.nextInt(10) + 1;
 
-        // if random number is 1 (10% chance, add strength to base attack damage and extra damage for a critical hit)
+        // if random number is 1 (10% chance), add strength to base attack damage and extra damage for a critical hit)
         if (chance == CRITICAL_HIT)
         {
             strength += ATTACK_DAMAGE + EXTRA_DAMAGE;
