@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Character
+public final class Character
 {
     public int currentHealth = 50;
     private String name;
@@ -9,9 +9,9 @@ public class Character
 
     /**
      * This is a parametized constructor
-     * @param name a String
-     * @param strength an integer
-     * @param speed an integer
+     * @param name the character's name, a String
+     * @param strength the character's strength, an integer
+     * @param speed the character's speed, an integer
      */
     public Character(String name, int strength, int speed)
     {
@@ -29,6 +29,25 @@ public class Character
         this.name = ch.name;
         this.strength = ch.strength;
         this.speed = ch.speed;
+    }
+
+    /**
+     * This method gets the character's name
+     * @return the character's name, a string
+     */
+    public String getCharacterName()
+    {
+        return name;
+    }
+
+    /**
+     *  This method gets the characters current health
+     * @return the character's current health, an integer
+     */
+
+    public int getCurrentHealth()
+    {
+        return currentHealth;
     }
 
     /**
@@ -77,7 +96,7 @@ public class Character
     /**
      * This method is called whenever a character takes damage, 
      * it subtracts current health from how much damage was dealt to them
-     * @param damageTaken an integer
+     * @param damageTaken how much damage was taken, an integer
      */
     public void takeDamage(int damageTaken)
     {
