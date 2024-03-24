@@ -15,17 +15,15 @@ public class Character
 
     public int attack()
     {
+        final int CRITICAL_HIT = 1;
         Random rnd = new Random();
+        strength += ATTACK_DAMAGE;
 
-        int criticalHit = rnd.nextInt(10) + 1;
+        int chance = rnd.nextInt(10) + 1;
 
-        if (criticalHit == 1)
+        if (chance == CRITICAL_HIT)
         {
-            strength += ATTACK_DAMAGE + 5;
-        }
-        else
-        {
-            strength += ATTACK_DAMAGE;
+            strength += 5;
         }
         return strength;
         
