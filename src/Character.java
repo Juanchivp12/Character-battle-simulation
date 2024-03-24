@@ -1,10 +1,10 @@
 import java.util.Random;
 public class Character
 {
+    public int currentHealth = 50;
     private String name;
     private int strength;
     private int speed;
-    public final int ATTACK_DAMAGE = 10;
 
     public Character(String name, int strength, int speed)
     {
@@ -15,7 +15,9 @@ public class Character
 
     public int attack()
     {
+        final int ATTACK_DAMAGE = 10;
         final int CRITICAL_HIT = 1;
+        final int EXTRA_DAMAGE = 5;
         Random rnd = new Random();
         strength += ATTACK_DAMAGE;
 
@@ -23,9 +25,21 @@ public class Character
 
         if (chance == CRITICAL_HIT)
         {
-            strength += 5;
+            strength += EXTRA_DAMAGE;
         }
         return strength;
-        
+    }
+
+    public int heal()
+    {
+        final int HEALING = 5;
+        int healthGained = HEALING + (speed * 2);
+
+        return healthGained;
+    }
+
+    public void takeDamage(int damageTaken)
+    {
+        currentHealth -= damageTaken;
     }
 }
