@@ -13,20 +13,24 @@ public class BattleSimulation
         Random rnd = new Random();
         Character myCharacter1 = new Character("spongeBob", 4, 1);
         Character myCharacter2 = new Character("Patrick", 3, 2);
-
-        while (myCharacter1.getCurrentHealth() > 0 && myCharacter2.getCurrentHealth() > 0)
+        for (int i = 0; i < 5; i++)
         {
-            int battle = rnd.nextInt(4) + 1;
-            
-            switch (battle)
-            {
-                case BOTH_ATTACK:
-                System.out.println(myCharacter1.getCharacterName() + " chooses to attack and deals " + myCharacter1.attack(myCharacter2) + " damage!");
-                System.out.println(myCharacter2.getCharacterName() + " chooses to attack and deals " + myCharacter2.attack(myCharacter1) + " damage!");
-                System.out.println(myCharacter1.getCharacterName() + " has " + myCharacter1.getCurrentHealth() + " health remaining");
-                System.out.println(myCharacter2.getCharacterName() + " has " + myCharacter2.getCurrentHealth() + " health remaining");
-                break;
-            }
+            System.out.println("hello");
         }
+
+        // while (myCharacter1.getCurrentHealth() > 0 && myCharacter2.getCurrentHealth() > 0)
+        // {
+        //     int battle = rnd.nextInt(4) + 1;
+            
+        //     switch (battle)
+        //     {
+        //         case BOTH_ATTACK:
+        //         System.out.println(myCharacter1.getCharacterName() + " chooses to attack and deals " + myCharacter1.attack(myCharacter2) + " damage!");
+        //         System.out.println(myCharacter2.getCharacterName() + " chooses to attack and deals " + myCharacter2.attack(myCharacter1) + " damage!");
+        //         System.out.println(myCharacter1.getCharacterName() + " has " + myCharacter1.getCurrentHealth() + " health remaining");
+        //         System.out.println(myCharacter2.getCharacterName() + " has " + myCharacter2.getCurrentHealth() + " health remaining");
+        //         break;
+        //     }
+        // }
     }
 }
