@@ -22,13 +22,13 @@ public final class Character
 
     /**
      * This is a copy constructor
-     * @param ch an object reference variable
+     * @param character an object reference variable
      */
-    public Character(Character ch)
+    public Character(Character character)
     {
-        this.name = ch.name;
-        this.strength = ch.strength;
-        this.speed = ch.speed;
+        this.name = character.name;
+        this.strength = character.strength;
+        this.speed = character.speed;
     }
 
     /**
@@ -42,9 +42,10 @@ public final class Character
 
     /**
      * This method determines how much damage is dealt if an attack is chosen
+     * @param character an object reference variable
      * @return strength, an integer
      */
-    public int attack(Character ch)
+    public int attack(Character character)
     {
         // Constants 
         final int ATTACK_DAMAGE = 10;
@@ -62,7 +63,7 @@ public final class Character
         {
             damage += EXTRA_DAMAGE;
         }
-        ch.takeDamage(damage);
+        character.takeDamage(damage);
         return damage;
     }
 
