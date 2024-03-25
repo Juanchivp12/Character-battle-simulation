@@ -3,9 +3,9 @@ import java.util.Random;
 public final class Character
 {
     public int currentHealth = 50;
-    private String name;
-    private int strength;
-    private int speed;
+    private final String name;
+    private final int strength;
+    private final int speed;
 
     /**
      * This is a parametized constructor
@@ -61,6 +61,8 @@ public final class Character
         final int CRITICAL_HIT = 1;
         final int EXTRA_DAMAGE = 5;
 
+        int damage = strength + ATTACK_DAMAGE;
+
         // Making a random object and generating a random int
         Random rnd = new Random();
         int chance = rnd.nextInt(10) + 1;
@@ -68,14 +70,9 @@ public final class Character
         // if random number is 1 (10% chance), add strength to base attack damage and extra damage for a critical hit)
         if (chance == CRITICAL_HIT)
         {
-            strength += ATTACK_DAMAGE + EXTRA_DAMAGE;
+            damage += EXTRA_DAMAGE;
         }
-        // if random number is not 1, just add strength to attack damage
-        else
-        {
-            strength += ATTACK_DAMAGE;
-        }
-        return strength;
+        return damage;
     }
 
     /**
