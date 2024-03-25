@@ -8,6 +8,6 @@ public class BattleSimulation
         Random rnd = new Random();
         Character spongeBob = new Character("spongeBob", 4, 1);
         Character patrick = new Character("Patrick", 3, 2);
-
+System.out.println(patrick);
     }
 }
