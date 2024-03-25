@@ -44,7 +44,7 @@ public final class Character
      * This method determines how much damage is dealt if an attack is chosen
      * @return strength, an integer
      */
-    public int attack()
+    public int attack(Character ch)
     {
         // Constants 
         final int ATTACK_DAMAGE = 10;
@@ -62,6 +62,7 @@ public final class Character
         {
             damage += EXTRA_DAMAGE;
         }
+        ch.takeDamage(damage);
         return damage;
     }
 
