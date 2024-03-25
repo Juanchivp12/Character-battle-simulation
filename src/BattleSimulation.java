@@ -6,7 +6,7 @@ public class BattleSimulation
         Character michael = new Character("michael", 4, 1);
         Character klaus = new Character("Klaus", 3, 2);
 
-        System.out.println("Michael chooses to attack and deals " + michael.attack() + " damage!");
-        
+        klaus.takeDamage(michael.attack());
+        System.out.println(klaus.getCurrentHealth());
     }
 }
