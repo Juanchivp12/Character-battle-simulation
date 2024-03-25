@@ -41,16 +41,6 @@ public final class Character
     }
 
     /**
-     *  This method gets the characters current health
-     * @return the character's current health, an integer
-     */
-
-    public int getCurrentHealth()
-    {
-        return currentHealth;
-    }
-
-    /**
      * This method determines how much damage is dealt if an attack is chosen
      * @return strength, an integer
      */
@@ -101,6 +91,16 @@ public final class Character
     public void takeDamage(int damageTaken)
     {
         currentHealth -= damageTaken;
+    }
+
+    /**
+     *  This method gets the characters current health
+     * @return the character's current health, an integer
+     */
+
+    public int getCurrentHealth()
+    {
+        return currentHealth;
     }
 
     /**
