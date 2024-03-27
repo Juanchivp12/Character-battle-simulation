@@ -25,7 +25,16 @@ public class BattleSimulation
                 System.out.println(myCharacter2.getCharacterName() + " chooses to attack and deals " + myCharacter2.attack(myCharacter1) + " damage!");
                 System.out.println(myCharacter1.getCharacterName() + " has " + myCharacter1.getCurrentHealth() + " health remaining");
                 System.out.println(myCharacter2.getCharacterName() + " has " + myCharacter2.getCurrentHealth() + " health remaining");
+                System.out.println("---------------------------------------------------------------------");
                 break;
+
+                case BOTH_HEAL:
+                System.out.println(myCharacter1.getCharacterName() + " chooses to heal and deals " + myCharacter1.attack(myCharacter2) + " damage!");
+                System.out.println(myCharacter2.getCharacterName() + " chooses to attack and deals " + myCharacter2.attack(myCharacter1) + " damage!");
+                System.out.println(myCharacter1.getCharacterName() + " has " + myCharacter1.getCurrentHealth() + " health remaining");
+                System.out.println(myCharacter2.getCharacterName() + " has " + myCharacter2.getCurrentHealth() + " health remaining");
+                break;
+
             }
         }
     }
