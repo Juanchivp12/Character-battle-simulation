@@ -11,7 +11,7 @@ public class BattleSimulation
         final int CHAR1_HEALS_CHAR2_ATTACKS = 4;
         
         Random rnd = new Random();
-        Character myCharacter1 = new Character("spongeBob", 4, 1);
+        Character myCharacter1 = new Character("SpongeBob", 4, 1);
         Character myCharacter2 = new Character("Patrick", 3, 2);
 
         while (myCharacter1.getCurrentHealth() > 0 && myCharacter2.getCurrentHealth() > 0)
