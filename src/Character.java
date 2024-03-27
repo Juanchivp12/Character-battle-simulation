@@ -1,11 +1,11 @@
 import java.util.Random;
 
-public final class Character
+public class Character
 {
-    public int currentHealth = 50;
-    private final String name;
-    private final int strength;
-    private final int speed;
+    private String name;
+    private int strength;
+    private int speed;
+    private int health;
 
     /**
      * This is a parametized constructor
@@ -13,11 +13,12 @@ public final class Character
      * @param strength the character's strength, an integer
      * @param speed the character's speed, an integer
      */
-    public Character(String name, int strength, int speed)
+    public Character(String name, int strength, int speed, int health)
     {
         this.name = name;
         this.strength = strength;
         this.speed = speed;
+        this.health = health;
     }
 
     /**
@@ -29,6 +30,7 @@ public final class Character
         this.name = character.name;
         this.strength = character.strength;
         this.speed = character.speed;
+        this.health = character.health;
     }
 
     /**
@@ -39,6 +41,33 @@ public final class Character
     {
         return name;
     }
+
+    /**
+     * This method gets the character's strength
+     * @return the character's strength, an int
+     */
+    public int getCharacterStrength()
+    {
+        return strength;
+    }
+
+    /**
+     * This method gets the character's strength
+     * @return the character's speed, an int
+     */
+    public int getCharacterSpeed()
+    {
+        return speed;
+    }
+
+    /**
+     *  This method gets the characters current health
+     * @return the character's current health, an integer
+     */
+     public int getCharacterHealth()
+     {
+         return health;
+     }
 
     /**
      * This method determines how much damage is dealt if an attack is chosen
@@ -62,6 +91,7 @@ public final class Character
         if (chance == CRITICAL_HIT)
         {
             damage += EXTRA_DAMAGE;
+            System.out.print("**Critical hit!** ");
         }
         character.takeDamage(damage);
         return damage;
@@ -79,6 +109,8 @@ public final class Character
         // Health gained is base healing plus 2 times the speed
         int healthGained = HEALING + (speed * 2);
 
+        health += healthGained;
+
         return healthGained;
     }
 
@@ -89,17 +121,7 @@ public final class Character
      */
     public void takeDamage(int damageTaken)
     {
-        currentHealth -= damageTaken;
-    }
-
-    /**
-     *  This method gets the characters current health
-     * @return the character's current health, an integer
-     */
-
-    public int getCurrentHealth()
-    {
-        return currentHealth;
+        health -= damageTaken;
     }
 
     /**
