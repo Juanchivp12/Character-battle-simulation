@@ -1,6 +1,8 @@
 /**
  * This program is a turn based battle simulator between 2 characters.
- * @author Juan Villegas, Iman Chaudhry COSC-1437 Mondays/Wednesdays 11:00am-12:45pm
+ * @author Juan Villegas
+ * @author Iman Chaudhry 
+ * COSC-1437 Mondays/Wednesdays 11:00am-12:45pm
  */
 import java.util.Random;
 
@@ -8,14 +10,13 @@ public class BattleSimulation
 {
     public static void main(String[] args) 
     {
+        // 70% chance of attacking and a 30% chance of healing
+
         // Constants for battle 
-        final int BOTH_ATTACK = 1;
-        final int BOTH_HEAL = 2;
-        final int CHAR1_ATTACKS_CHAR2_HEALS = 3;
-        final int CHAR1_HEALS_CHAR2_ATTACKS = 4;
         final int MIN_HEALTH = 0;
         final int MIN_CHOICE = 1;
-        final int MAX_CHOICE = 4;
+        final int MAX_CHOICE = 10;
+        final int HEAL_THRESHOLD = 3;
 
         // Symbol Strings for formatting output
         String separatedLines = "- - - - - - - - - - - - - - - - - - - - - - - - - - -";
@@ -38,38 +39,40 @@ public class BattleSimulation
         // While loop, stops when someone dies
         while (myCharacter1.getCharacterHealth() > MIN_HEALTH && myCharacter2.getCharacterHealth() > MIN_HEALTH)
         {
-            // Generate a random number from 1 - 4 to choose what the characters do
-            int battle = rnd.nextInt(MAX_CHOICE) + MIN_CHOICE;
-            
-            switch (battle)
+            // Generate a random number from 1 - 10 (x > 3 being 70% and x <= 3 being 30%) to choose what the characters do
+            int randomNumCharacter1 = rnd.nextInt(MAX_CHOICE) + MIN_CHOICE;
+            int randomNumCharacter2 = rnd.nextInt(MAX_CHOICE) + MIN_CHOICE;
+
+            // Depending on what the random number generators makes, do whichever action represent the percentage
+            if (randomNumCharacter1 > HEAL_THRESHOLD && randomNumCharacter2 > HEAL_THRESHOLD)            
             {
-                case BOTH_ATTACK:
                 System.out.println(myCharacter1.getCharacterName() + " chooses to attack and deals " + myCharacter1.attack(myCharacter2) + " damage!");
                 System.out.println(myCharacter2.getCharacterName() + " chooses to attack and deals " + myCharacter2.attack(myCharacter1) + " damage!");
                 System.out.println(separatedLines);
                 System.out.println(myCharacter1.getCharacterName() + " has " + myCharacter1.getCharacterHealth() + " health remaining");
                 System.out.println(myCharacter2.getCharacterName() + " has " + myCharacter2.getCharacterHealth() + " health remaining");
                 System.out.println(dashedLines);
-                break;
-
-                case BOTH_HEAL:
+            }
+            else if (randomNumCharacter1 <= HEAL_THRESHOLD && randomNumCharacter2 <= HEAL_THRESHOLD)
+            {
                 System.out.println(myCharacter1.getCharacterName() + " chooses to heal. They gained " + myCharacter1.heal() + " health");
                 System.out.println(myCharacter2.getCharacterName() + " chooses to heal. They gained " + myCharacter2.heal() + " health");
                 System.out.println(separatedLines);
                 System.out.println(myCharacter1.getCharacterName() + " has " + myCharacter1.getCharacterHealth() + " health remaining");
                 System.out.println(myCharacter2.getCharacterName() + " has " + myCharacter2.getCharacterHealth() + " health remaining");
                 System.out.println(dashedLines);
-                break;
-
-                case CHAR1_ATTACKS_CHAR2_HEALS:
+            }
+            else if (randomNumCharacter1 > HEAL_THRESHOLD && randomNumCharacter2 <= HEAL_THRESHOLD)
+            {
                 System.out.println(myCharacter1.getCharacterName() + " chooses to attack and deals " + myCharacter1.attack(myCharacter2) + " damage!");
                 System.out.println(myCharacter2.getCharacterName() + " chooses to heal. They gained " + myCharacter2.heal() + " health");
                 System.out.println(separatedLines);
                 System.out.println(myCharacter1.getCharacterName() + " has " + myCharacter1.getCharacterHealth() + " health remaining");
                 System.out.println(myCharacter2.getCharacterName() + " has " + myCharacter2.getCharacterHealth() + " health remaining");
                 System.out.println(dashedLines);
-
-                case CHAR1_HEALS_CHAR2_ATTACKS:
+            }
+            else if (randomNumCharacter1 <= HEAL_THRESHOLD && randomNumCharacter2 > HEAL_THRESHOLD)
+            {
                 System.out.println(myCharacter1.getCharacterName() + " chooses to heal. They gained " + myCharacter1.heal() + " health");
                 System.out.println(myCharacter2.getCharacterName() + " chooses to attack and deals " + myCharacter2.attack(myCharacter1) + " damage!");
                 System.out.println(separatedLines);
@@ -84,11 +87,15 @@ public class BattleSimulation
         System.out.println("The battle has ended.");
 
         // Outputs who won
-        if (myCharacter1.getCharacterHealth() >= MIN_HEALTH)
+        if (myCharacter1.getCharacterHealth() <= MIN_HEALTH && myCharacter2.getCharacterHealth() <= MIN_HEALTH) 
+        {
+            System.out.println("Sadly, the dual has left them both dead.");
+        }
+        else if (myCharacter1.getCharacterHealth() >= MIN_HEALTH)
         {
             System.out.println(myCharacter1.getCharacterName() + " has emerged victorious!");
         }
-        else
+        else 
         {
             System.out.println(myCharacter2.getCharacterName() + " has emerged victorious!");
         }
