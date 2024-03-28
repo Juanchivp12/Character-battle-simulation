@@ -93,10 +93,4 @@ public class BattleSimulation
             System.out.println(myCharacter2.getCharacterName() + " has emerged victorious!");
         }
     }
-
-    public static void battle()
-    {
-        
-        
-    }
 }
